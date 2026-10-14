@@ -264,4 +264,416 @@ nav.top .links a{transition:background .15s,color .15s}
 nav.top .links a[aria-current="page"]{background:var(--accent);color:var(--accent-ink);box-shadow:none}
 button,.btn{transition:border-color .15s,background .15s,transform .1s}
 button:active,.btn:active{transform:scale(.98)}
-.btn{display:inline-flex;align-items:center;gap:8px
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--font-body);border-radius:999px;padding:10px 18px;min-height:42px;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.card,.tile,.icard,.chart,.guide,.report,.side,.stage,.strip,.navcard{box-shadow:var(--shadow)}
+.view{animation:vin .3s ease both}
+@keyframes vin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);column-gap:32px;row-gap:14px;align-content:center;padding:clamp(22px,4.5vw,44px);border-radius:22px;color:#EAF2F6;background:linear-gradient(135deg,var(--deep1) 0%,var(--deep2) 62%,#1F4F63 100%)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse at 80% 40%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 80% 40%,#000 10%,transparent 70%);pointer-events:none}
+.hero>*{position:relative;grid-column:1;min-width:0}
+.hero .heroArt{grid-column:2;grid-row:1/span 5;align-self:center}
+.hero .banner{grid-column:1/-1}
+.hero .eyebrow{color:#F4B26A}
+.hero h1{color:#fff;max-width:20ch;font-size:clamp(28px,5vw,46px)}
+.hero .lead{color:#B9CCD6;font-size:16px}
+.hero .chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#EAF2F6}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.hero .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);color:#fff}
+.hero .btn:hover{background:rgba(255,255,255,.18)}
+.hero .btn.pri{background:var(--flame);border-color:var(--flame);color:#1B1405;font-weight:600}
+.heroArt svg{display:block;max-width:440px;margin-inline:auto;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
+@media (max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}.hero .heroArt{grid-column:1;grid-row:auto}}
+
+/* kartu alur kerja */
+.navcards{counter-reset:nc;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.navcard{counter-increment:nc;position:relative;padding:16px 16px 16px 16px;gap:6px;transition:transform .15s,border-color .15s}
+.navcard:hover{transform:translateY(-3px)}
+.navcard::before{content:counter(nc);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--tc,var(--accent));color:var(--tink);font:600 14px var(--font-mono);margin-bottom:6px}
+.navcard:nth-child(1){--tc:var(--s1)}.navcard:nth-child(2){--tc:var(--s0)}.navcard:nth-child(3){--tc:var(--s3)}.navcard:nth-child(4){--tc:var(--s2)}.navcard:nth-child(5){--tc:var(--s5)}
+.navcard strong{font-size:16px}
+@media (min-width:1000px){.navcard:not(:last-child)::after{content:"→";position:absolute;right:12px;top:16px;color:var(--mute);font-size:18px}}
+.goals{list-style:none;padding:0}
+.goals li{position:relative;padding-left:26px}
+.goals li::before{content:"";position:absolute;left:4px;top:.55em;width:10px;height:10px;border-radius:3px;background:var(--flame)}
+
+/* ringkasan hasil */
+.tile{border-top:3px solid var(--tcb,var(--accent))}
+.stats .tile:nth-child(1){--tcb:var(--s0)}.stats .tile:nth-child(2){--tcb:var(--s1)}.stats .tile:nth-child(3){--tcb:var(--s2)}.stats .tile:nth-child(4){--tcb:var(--s5)}
+.tile .v{font-size:30px}
+
+/* tab bernomor di kalkulator */
+.tabs[aria-label="Langkah perhitungan"]{counter-reset:stp;gap:4px;padding-bottom:0}
+.tabs[aria-label="Langkah perhitungan"] button{counter-increment:stp;display:inline-flex;align-items:center;gap:8px}
+.tabs[aria-label="Langkah perhitungan"] button::before{content:counter(stp);display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--ink);font:500 12px var(--font-mono)}
+.tabs[aria-label="Langkah perhitungan"] button[aria-selected="true"]::before{background:var(--accent);color:var(--accent-ink)}
+.strip{position:sticky;top:58px;z-index:10;background:color-mix(in srgb,var(--panel) 92%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.stepnav{display:flex;justify-content:space-between;gap:10px;margin-top:6px}
+.stepnav .btn{min-height:44px}
+.stepnav .sp{flex:1}
+input[type=text],input[type=date],input[type=number],textarea{transition:border-color .15s,box-shadow .15s}
+input[type=text]:hover,input[type=number]:hover{border-color:var(--mute)}
+input[type=text]:focus,input[type=number]:focus,input[type=date]:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.card h3{display:flex;align-items:center;gap:8px}
+.card h3::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--flame)}
+
+/* stage 3D */
+.stage{background:radial-gradient(ellipse at 50% 35%,color-mix(in srgb,var(--stage) 70%,#fff 8%),var(--stage))}
+.qbar{position:absolute;right:12px;bottom:12px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:60%}
+.qbar button{min-height:36px;padding:5px 13px;font-size:13px;background:var(--chip);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.qbar button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.hint{background:color-mix(in srgb,var(--chip) 80%,transparent);border-radius:999px;padding:3px 10px;border:1px solid var(--line)}
+@media (max-width:620px){.qbar{right:auto;left:12px;bottom:auto;top:44px;max-width:calc(100% - 24px);justify-content:flex-start}.read{bottom:12px}}
+
+/* navigasi bawah (HP) */
+nav.bottom{display:none}
+@media (max-width:640px){
+  body{padding-bottom:84px}
+  nav.top .links{display:none}
+  nav.top .brand{display:inline-flex}
+  nav.top button{margin-left:auto}
+  nav.bottom{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;z-index:40;background:color-mix(in srgb,var(--panel) 94%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+  nav.bottom a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;border-radius:12px;color:var(--mute);text-decoration:none;font-size:11px;min-height:48px;justify-content:center}
+  nav.bottom a[aria-current="page"]{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+  .strip{top:50px}
+}
+@media (prefers-reduced-motion:reduce){.view{animation:none}}
+.lta{min-height:90px;line-height:1.6;font-family:var(--font-body);resize:vertical;field-sizing:content}
+#v-laporan-praktikum .card .report{border:0;padding:0;box-shadow:none;background:transparent}
+#v-laporan-praktikum input.t,#v-laporan-praktikum input.n{font-family:var(--font-body)}
+.banner.ok{background:rgba(95,211,95,.16);color:#CFF5CF;border:1px solid rgba(95,211,95,.35)}
+.find{margin:0;padding-left:20px;display:grid;gap:8px}
+.find li{padding-left:4px}
+.find li::marker{color:var(--flame)}
+#v-kalkulator .card .report{border:0;padding:0;box-shadow:none;background:transparent}
+.report .eq{line-height:1.55}
+table.dt tbody tr:hover{background:color-mix(in srgb,var(--accent) 7%,transparent)}
+table.dt td:nth-child(2){min-width:160px}
+.legend b{font-family:var(--font-mono);color:var(--ink)}
+.status{top:44px}
+.read{bottom:60px}
+</style>
+
+<nav class="top" aria-label="Navigasi utama">
+  <a class="brand" href="#beranda" data-go="beranda">Ca · SSA-Nyala</a>
+  <div class="links">
+    <a href="#beranda" data-go="beranda" data-view="beranda">Beranda</a>
+    <a href="#model" data-go="model" data-view="model">Model 3D</a>
+    <a href="#bobot" data-go="bobot" data-view="bobot">Bobot komponen</a>
+    <a href="#gangguan" data-go="gangguan" data-view="gangguan">Gangguan</a>
+    <a href="#kalkulator" data-go="kalkulator" data-view="kalkulator">Kalkulator</a>
+    <a href="#laporan-praktikum" data-go="laporan-praktikum" data-view="laporan-praktikum">Laporan praktikum</a>
+  </div>
+  <button id="bTheme" type="button">Tema: terang</button>
+</nav>
+
+<main class="wrap">
+
+  <!-- ============ BERANDA ============ -->
+  <section class="view" id="v-beranda">
+    <div class="hero">
+      <div class="eyebrow">Projek digitalisasi instrumentasi</div>
+      <h1>Gangguan Analisis Ca pada Spektrofotometri Serapan Atom-Nyala</h1>
+      <p class="lead">Satu siklus percobaan gangguan kalsium pada AAS nyala dalam bentuk digital: model 3D instrumen dengan bobot tiap komponen, kurva kalibrasi, Ca terukur pada 9 larutan uji, pengaruh sulfat dan fosfat serta agen pelepas, sampai laporan yang terisi otomatis.</p>
+      <div class="cta"><a class="btn pri" href="#model" data-go="model">Mulai dari model 3D</a><a class="btn" href="#kalkulator" data-go="kalkulator">Buka kalkulator</a></div>
+      <div class="chips"><span class="chip">Ca 422,7 nm</span><span class="chip">Lampu katoda berongga Ca</span><span class="chip">Nyala udara–asetilen</span></div>
+      <div class="heroArt" aria-hidden="true"><svg viewBox="0 0 400 250" width="100%" role="presentation">
+<defs><linearGradient id="bm" x1="0" x2="1"><stop offset="0" stop-color="#FFD36B" stop-opacity=".95"/><stop offset="1" stop-color="#FFD36B" stop-opacity=".55"/></linearGradient>
+<radialGradient id="gl" cx=".5" cy=".6" r=".6"><stop offset="0" stop-color="#F0A32A" stop-opacity=".45"/><stop offset="1" stop-color="#F0A32A" stop-opacity="0"/></radialGradient></defs>
+<circle cx="172" cy="130" r="70" fill="url(#gl)"/>
+<line x1="90" y1="117" x2="318" y2="117" stroke="url(#bm)" stroke-width="3" stroke-linecap="round"/>
+<rect x="20" y="93" width="70" height="48" rx="10" fill="#F0B24A"/><rect x="26" y="103" width="16" height="28" rx="4" fill="#B3322F"/><circle cx="82" cy="117" r="7" fill="#9CC9E6"/>
+<rect x="148" y="166" width="48" height="12" rx="3" fill="#7C8F99"/>
+<path d="M172 166 C148 134 176 124 170 88 C196 112 204 142 186 166 Z" fill="#F0A32A"/><path d="M172 166 C162 148 172 142 172 128 C184 140 184 154 178 166 Z" fill="#4C8DF0" opacity=".9"/>
+<rect x="225" y="85" width="72" height="64" rx="9" fill="#3E6A66"/><rect x="223" y="106" width="5" height="22" fill="#14211F"/><rect x="294" y="106" width="5" height="22" fill="#14211F"/><rect x="250" y="102" width="22" height="30" rx="2" fill="#FAC775" transform="rotate(-14 261 117)"/>
+<circle cx="344" cy="117" r="26" fill="#D85A30"/><circle cx="344" cy="117" r="14" fill="#F4936A"/>
+<g fill="#FFD36B"><circle cx="112" cy="117" r="3.5"/><circle cx="132" cy="117" r="3.5"/><circle cx="152" cy="117" r="3.5"/><circle cx="212" cy="117" r="3.5"/><circle cx="312" cy="117" r="3.5"/></g>
+<g fill="#9FB6C2" font-family="IBM Plex Sans,system-ui,sans-serif" font-size="12" text-anchor="middle"><text x="55" y="162">Lampu Ca</text><text x="172" y="198">Nyala</text><text x="261" y="170">Monokromator</text><text x="344" y="162">Detektor</text></g>
+<text x="200" y="232" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="15" fill="#F4B26A">A = −log₁₀(I / I₀)</text>
+<text x="55" y="80" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#F4B26A">422,7 nm</text>
+</svg></div>
+    </div>
+
+    <div class="stats" aria-label="Ringkasan hasil">
+      <div class="tile"><small>Ca terukur, tanpa pengganggu</small><div class="v" id="tK">–</div><span id="tKp"></span></div>
+      <div class="tile"><small>Linearitas kurva (r)</small><div class="v" id="tR">–</div><span id="tRp"></span></div>
+      <div class="tile"><small>Gangguan sulfat</small><div class="v" id="tS">–</div><span id="tSp"></span></div>
+      <div class="tile"><small>Gangguan fosfat</small><div class="v" id="tP">–</div><span id="tPp"></span></div>
+    </div>
+
+    <h2 class="h2s">Pemeriksaan data otomatis</h2><div class="card"><ul class="find" id="chk"></ul></div>
+    <h2 class="h2s">Temuan utama percobaan</h2>
+    <div class="chart" id="chHome"></div>
+    <div class="legend" id="lgHome"></div>
+    <div class="card"><ul class="find" id="homeFind"></ul></div>
+
+    <h2 class="h2s">Alur kerja, dari alat sampai laporan</h2>
+    <div class="navcards">
+      <a class="navcard" href="#model" data-go="model"><strong>Model 3D instrumen</strong><span>Putar 360 derajat, lihat isi dalam, 14 bagian dengan penjelasan rinci.</span></a>
+      <a class="navcard" href="#bobot" data-go="bobot"><strong>Bobot komponen</strong><span>Skor dan peringkat pengaruh tiap bagian terhadap analisis Ca.</span></a>
+      <a class="navcard" href="#gangguan" data-go="gangguan"><strong>Gangguan analisis Ca</strong><span>Jenis gangguan, cara mengatasi, dan data 9 larutan uji.</span></a>
+      <a class="navcard" href="#kalkulator" data-go="kalkulator"><strong>Kalkulator kadar</strong><span>Deret standar, kurva kalibrasi, dan 9 larutan uji.</span></a>
+      <a class="navcard" href="#laporan-praktikum" data-go="laporan-praktikum"><strong>Laporan praktikum</strong><span>Laporan lengkap kelompok 4: teori, data, perhitungan, pembahasan.</span></a>
+    </div>
+
+    <h2 class="h2s">Tujuan projek</h2>
+    <ul class="goals">
+      <li>Mendigitalkan data pengamatan deret standar dan sampel tanpa lembar kertas.</li>
+      <li>Menghitung otomatis regresi, r, estimasi LOD dan LOQ, serta Ca terukur tiap larutan uji.</li>
+      <li>Menampilkan kurva kalibrasi lengkap dengan posisi larutan uji.</li>
+      <li>Menilai efektivitas releasing agent (Sr, La) dan masking agent (EDTA).</li>
+      <li>Mengkaji gangguan pada serapan Ca dan pengaruh pelepas.</li>
+      <li>Menyajikan model 3D instrumen dengan pembobotan komponen.</li>
+      <li>Menghasilkan laporan berformat yang terisi otomatis.</li>
+      <li>Bisa dipakai di laptop dan HP.</li>
+    </ul>
+    <footer>Data dan pengaturan tersimpan di peramban ini saja, tidak terkirim ke mana pun. Penjelasan gangguan, kisaran pelepas, dan batas keberterimaan adalah ringkasan umum, bukan standar resmi. Cocokkan dengan modul praktikum dan manual alat sebelum dipakai untuk laporan.</footer>
+  </section>
+
+  <!-- ============ MODEL 3D ============ -->
+  <section class="view" id="v-model" hidden>
+    <div class="vh"><h2>Model 3D instrumen</h2><p class="lead">Seret untuk memutar 360 derajat, gulir atau cubit untuk zoom. Mode X-ray menampilkan isi dalam alat.</p></div>
+    <div class="viewer">
+      <div class="stage" id="stage">
+        <div class="hint">Model AAS-nyala GBC Avanta · ketuk bagian model untuk membuka</div>
+        <div class="status" id="status"></div>
+        <style>.simbar{position:absolute;left:10px;right:10px;bottom:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;z-index:5}#simCap{background:color-mix(in srgb,var(--panel) 85%,transparent);border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-size:12px;line-height:1.35;max-width:min(380px,100%)}.simctl{display:flex;gap:6px}.simctl select{max-width:150px;font:600 12px system-ui,sans-serif;padding:7px 8px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:inherit}.simctl button{font:600 13px system-ui,sans-serif;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:inherit;cursor:pointer}
+</style>
+        <div class="simbar" id="simbar"><div id="simCap" hidden></div><div class="simctl"><button id="simGo" type="button">▶ Simulasi start-up → kurva</button><button id="simPrev" type="button" hidden>‹</button><button id="simPause" type="button" hidden>❚❚</button><button id="simNext" type="button" hidden>›</button></div></div>
+        <div class="read">
+          <div><small>Intensitas</small><output id="oI">100%</output></div>
+          <div><small>Absorbansi</small><output id="oA">0.000</output></div>
+        </div>
+      </div>
+      <aside class="side" aria-label="Panel model">
+        <div class="tabs" role="tablist" aria-label="Panel model 3D">
+          <button type="button" role="tab" id="t-info" data-group="model" aria-controls="mp-info" aria-selected="true">Penjelasan</button>
+          <button type="button" role="tab" id="t-parts" data-group="model" aria-controls="mp-parts" aria-selected="false" tabindex="-1">Komponen</button>
+          <button type="button" role="tab" id="t-ctl" data-group="model" aria-controls="mp-ctl" aria-selected="false" tabindex="-1">Kontrol</button>
+        </div>
+        <div class="tp" role="tabpanel" data-group="model" id="mp-info" aria-labelledby="t-info">
+          <div class="gtop">
+            <span class="gstep" id="gStep">Langkah 1 dari 17</span>
+            <div class="gbtns">
+              <button id="gPrev" type="button">Sebelumnya</button>
+              <button id="gPlay" type="button" aria-pressed="false">Putar tur</button>
+              <button id="gNext" type="button">Berikutnya</button>
+            </div>
+          </div>
+          <div class="gbar"><i id="gProg"></i></div>
+          <span class="gsys" id="gSys" hidden></span>
+          <h3 id="gTitle"></h3>
+          <p class="gw" id="gW" hidden></p>
+          <p id="gText" aria-live="polite"></p>
+          <p class="gtip" id="gTip" hidden></p>
+        </div>
+        <div class="tp" role="tabpanel" data-group="model" id="mp-parts" aria-labelledby="t-parts" hidden>
+          <div class="groups" id="parts"></div>
+        </div>
+        <div class="tp" role="tabpanel" data-group="model" id="mp-ctl" aria-labelledby="t-ctl" hidden>
+          <div class="bar" role="group" aria-label="Kontrol simulasi">
+            <button id="bRun" type="button" aria-pressed="true">Jeda</button>
+            <button id="bFlame" type="button" aria-pressed="true">Api menyala</button>
+            <button id="bLid" type="button" aria-pressed="false">Buka penutup lampu</button>
+            <button id="bCover" type="button" aria-pressed="false">Buka cover</button>
+            <button id="bDoor" type="button" aria-pressed="false">Buka pintu ruang nyala</button>
+            <button id="bX" type="button" aria-pressed="false">Mode X-ray</button>
+            <button id="bLbl" type="button" aria-pressed="true">Label</button>
+            <button id="bFollow" type="button" aria-pressed="false">Ikuti berkas: mati</button>
+            <button id="bSpin" type="button" aria-pressed="false">Putar otomatis: mati</button>
+          </div>
+          <div class="bar" role="group" aria-label="Sudut pandang" style="margin-top:10px"><button type="button" data-view3d="front">Depan</button><button type="button" data-view3d="right">Kanan</button><button type="button" data-view3d="back">Belakang</button><button type="button" data-view3d="left">Kiri</button><button type="button" data-view3d="top">Atas</button></div>
+          <div class="sliders"><div class="sl"><label for="sSol">Larutan</label><select id="sSol" style="min-width:0;max-width:100%"><option value="">Manual (slider)</option></select><span></span></div>
+            <div class="sl"><label for="sSpd">Kecepatan</label><input id="sSpd" type="range" min="0.2" max="3" step="0.1" value="1"><output id="oSpd">1.0x</output></div>
+            <div class="sl"><label for="sCon">Konsentrasi</label><input id="sCon" type="range" min="0" max="100" step="1" value="45"><output id="oCon">45%</output></div>
+          </div>
+          <p class="note">Absorbansi pada layar dihitung dari hukum Lambert-Beer. Matikan api untuk melihat absorbansi kembali ke nol.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ BOBOT ============ -->
+  <section class="view" id="v-bobot" hidden>
+    <div class="vh"><h2>Pembobotan komponen</h2><p class="lead">Skor 1 sampai 5 pada tiga kriteria, dirata-ratakan dengan bobot kriteria, lalu dinormalkan menjadi total 100 %. Skor awal adalah penilaian awal; ubah sesuai diskusi kelompok.</p></div>
+    <div class="tabs" role="tablist" aria-label="Pembobotan">
+      <button type="button" role="tab" id="t-skor" data-group="bobot" aria-controls="b-skor" aria-selected="true">Kriteria dan skor</button>
+      <button type="button" role="tab" id="t-rank" data-group="bobot" aria-controls="b-rank" aria-selected="false" tabindex="-1">Peringkat bobot</button>
+    </div>
+    <div class="tp" role="tabpanel" data-group="bobot" id="b-skor" aria-labelledby="t-skor">
+      <div class="card">
+        <h3>Bobot kriteria (%)</h3>
+        <div class="crit">
+          <div class="field"><label for="wc0">K1 · Pengaruh ke ketelitian sinyal</label><input id="wc0" class="n" type="text" inputmode="decimal" data-p="w.crit.0"></div>
+          <div class="field"><label for="wc1">K2 · Pengaruh ke gangguan Ca</label><input id="wc1" class="n" type="text" inputmode="decimal" data-p="w.crit.1"></div>
+          <div class="field"><label for="wc2">K3 · Risiko keselamatan</label><input id="wc2" class="n" type="text" inputmode="decimal" data-p="w.crit.2"></div>
+        </div>
+        <p class="note" id="wcSum"></p>
+        <p class="note">Skala skor: 1 berarti pengaruh sangat kecil, 5 berarti sangat besar. K2 menilai seberapa besar komponen memengaruhi gangguan kimia, ionisasi, fisik, atau spektral pada analisis Ca.</p>
+      </div>
+      <div class="tw"><table aria-label="Pembobotan komponen">
+        <thead><tr><th>No</th><th>Komponen</th><th>Sistem</th><th>K1</th><th>K2</th><th>K3</th><th>Skor terbobot</th><th>Bobot (%)</th></tr></thead>
+        <tbody id="tbW"></tbody>
+        <tfoot><tr><td colspan="7" style="text-align:right;font-weight:600">Total</td><td class="o" id="wTot"></td></tr></tfoot>
+      </table></div>
+    </div>
+    <div class="tp" role="tabpanel" data-group="bobot" id="b-rank" aria-labelledby="t-rank" hidden>
+      <p class="note" id="wTop"></p>
+      <div class="rank" id="rank"></div>
+    </div>
+  </section>
+
+  <!-- ============ GANGGUAN ============ -->
+  <section class="view" id="v-gangguan" hidden>
+    <div class="vh"><h2>Gangguan pada analisis Ca</h2><p class="lead">Ringkasan bersifat umum. Cocokkan dengan modul praktikum dan manual alat.</p></div>
+    <div class="tabs" role="tablist" aria-label="Gangguan">
+      <button type="button" role="tab" id="t-gj" data-group="gang" aria-controls="g-jenis" aria-selected="true">Jenis gangguan</button>
+      <button type="button" role="tab" id="t-gd" data-group="gang" aria-controls="g-data" aria-selected="false" tabindex="-1">Data larutan uji</button>
+      <button type="button" role="tab" id="t-gg" data-group="gang" aria-controls="g-grafik" aria-selected="false" tabindex="-1">Grafik</button><button type="button" role="tab" id="t-gs" data-group="gang" aria-controls="g-sim" aria-selected="false" tabindex="-1">Simulasi gangguan</button>
+    </div>
+    <div class="tp" role="tabpanel" data-group="gang" id="g-jenis" aria-labelledby="t-gj">
+      <div class="cards4">
+        <article class="icard"><h3><span class="sysdot" style="--tc:var(--s3)"></span>Gangguan kimia</h3><dl>
+          <dt>Penyebab</dt><dd>Anion dan logam pengganggu seperti sulfat, silikat, dan aluminium membentuk senyawa Ca yang tahan panas, misalnya kalsium aluminat, sehingga sebagian Ca tidak menjadi atom bebas.</dd>
+          <dt>Dampak</dt><dd>Absorbansi Ca turun dan kadar terbaca terlalu rendah.</dd>
+          <dt>Mengatasi</dt><dd>Tambahkan pelepas La atau Sr (umumnya kisaran 0,1 sampai 1 % b/v), zat pelindung EDTA, atau pakai nyala N₂O–asetilen yang lebih panas. Samakan matriks standar dan sampel.</dd></dl></article>
+        <article class="icard"><h3><span class="sysdot" style="--tc:var(--s0)"></span>Gangguan ionisasi</h3><dl>
+          <dt>Penyebab</dt><dd>Pada nyala yang sangat panas sebagian atom Ca melepas elektron menjadi Ca⁺ (energi ionisasi pertama sekitar 6,11 eV). Efeknya lebih terasa pada nyala N₂O–asetilen.</dd>
+          <dt>Dampak</dt><dd>Atom Ca netral berkurang, absorbansi turun, dan kurva kalibrasi bisa melengkung.</dd>
+          <dt>Mengatasi</dt><dd>Tambahkan penekan ionisasi seperti K atau Cs (kisaran umum sekitar 1000 sampai 2000 mg/L K) pada blanko, standar, dan sampel.</dd></dl></article>
+        <article class="icard"><h3><span class="sysdot" style="--tc:var(--s2)"></span>Gangguan fisik dan matriks</h3><dl>
+          <dt>Penyebab</dt><dd>Kekentalan, tegangan permukaan, dan kadar padatan terlarut mengubah laju pengisapan dan efisiensi pengabutan.</dd>
+          <dt>Dampak</dt><dd>Jumlah sampel yang sampai ke nyala berbeda dari standar, sehingga sinyal bias.</dd>
+          <dt>Mengatasi</dt><dd>Encerkan sampel, samakan matriks standar dengan sampel, atau gunakan metode adisi standar.</dd></dl></article>
+        <article class="icard"><h3><span class="sysdot" style="--tc:var(--s5)"></span>Gangguan spektral dan latar</h3><dl>
+          <dt>Penyebab</dt><dd>Serapan molekul atau hamburan partikel dari matriks pada panjang gelombang yang sama menambah absorbansi semu.</dd>
+          <dt>Dampak</dt><dd>Absorbansi sampel terbaca terlalu tinggi.</dd>
+          <dt>Mengatasi</dt><dd>Koreksi latar jika alat memilikinya, pakai blanko matriks, dan atur lebar celah sesuai manual.</dd></dl></article>
+      </div>
+    </div>
+    <div class="tp" role="tabpanel" data-group="gang" id="g-data" aria-labelledby="t-gd" hidden>
+      <div class="card">
+        <h3>Data 9 larutan uji (Ca dibuat <span id="gNom"></span> mg/L)</h3>
+        <p class="note">Ca terukur = (Absorban − intersep) ÷ slope. Kolom % membandingkan dengan larutan tanpa pengganggu (no. 1). Pemulihan = bagian penurunan akibat anion yang naik kembali setelah ditambah agen: (Ca − Ca anion saja) ÷ (Ca no. 1 − Ca anion saja) × 100. Merah berarti di atas standar tertinggi. Absorban diubah di Kalkulator (tab Larutan uji) atau Laporan praktikum.</p>
+        <div class="tw"><table class="dt" aria-label="Data larutan uji">
+          <thead><tr><th>No</th><th>Larutan</th><th>Absorban</th><th>Ca terukur (mg/L)</th><th>% terhadap no. 1</th><th>Pemulihan oleh agen</th></tr></thead>
+          <tbody id="tbU2"></tbody></table></div>
+      </div>
+    </div>
+    <div class="tp" role="tabpanel" data-group="gang" id="g-grafik" aria-labelledby="t-gg" hidden>
+      <div class="chart" id="chInt"></div>
+      <div class="legend" id="lgInt"></div>
+      <div class="card"><div id="intfSum"></div></div>
+    </div>
+    <div class="tp" role="tabpanel" data-group="gang" id="g-sim" aria-labelledby="t-gs" hidden><div class="card"><h3>Simulasi gangguan kimia di nyala</h3><p class="note">Model semi-empiris untuk belajar: tetapan pengikatan anion dan pemulihan agen dihitung dari data 9 larutan uji Anda, bukan konstanta termodinamika. Ubah absorban di Kalkulator atau Laporan dan simulasi ikut berubah.</p><div class="grid3">
+<div class="field"><label for="simX">Anion pengganggu</label><select id="simX"><option value="so4">SO₄²⁻</option><option value="po4">PO₄³⁻</option></select></div>
+<div class="field"><label for="simXc">Anion (mg/L): <b id="oSX"></b></label><input id="simXc" type="range" min="0" max="500" step="10" value="100"></div>
+<div class="field"><label for="simAg">Agen</label><select id="simAg"><option value="none">Tanpa agen</option><option value="sr">Sr²⁺ (pelepas)</option><option value="la">La³⁺ (pelepas)</option><option value="edta">EDTA (masking)</option></select></div>
+<div class="field"><label for="simAc">Agen (mg/L): <b id="oSA"></b></label><input id="simAc" type="range" min="0" max="500" step="10" value="100"></div>
+<div class="field"><label for="simCa">Ca dibuat (mg/L): <b id="oSC"></b></label><input id="simCa" type="range" min="0" max="4" step="0.1" value="2"></div></div>
+<canvas id="simC" width="720" height="300" style="width:100%;max-width:720px;border-radius:12px;background:#0F2230"></canvas><div class="legend"><span><i style="background:#F0A32A"></i>Atom Ca bebas</span><span><i style="background:#8A939A"></i>Ca terikat (refraktori)</span><span><i style="background:#E24B4A"></i>Anion</span><span><i style="background:#4FD0D8"></i>Agen</span></div><div class="kv" id="simOut"></div></div></div>
+  </section>
+
+  <!-- ============ KALKULATOR ============ -->
+  <section class="view" id="v-kalkulator" hidden>
+    <div class="vh">
+      <h2>Kalkulator kurva kalibrasi dan larutan uji</h2>
+      <div class="btns">
+        <button type="button" id="bReset">Kembalikan data percobaan</button><button type="button" id="bExp">Ekspor data (.json)</button><label class="btn" style="cursor:pointer">Impor data<input id="fImp" type="file" accept=".json,application/json" hidden></label><button type="button" id="bCsv">Unduh CSV hasil</button>
+      </div>
+    </div>
+    <div class="strip" aria-label="Ringkasan hasil">
+      <div><small>Ca terukur no. 1</small><b id="kK">–</b></div>
+      <div><small>r</small><b id="kR">–</b></div>
+      <div><small>Persamaan kurva</small><b id="kA">–</b></div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Langkah perhitungan">
+      <button type="button" role="tab" id="t-kondisi" data-group="calc" aria-controls="c-kondisi" aria-selected="true">Kondisi</button>
+      <button type="button" role="tab" id="t-standar" data-group="calc" aria-controls="c-standar" aria-selected="false" tabindex="-1">Standar</button>
+      <button type="button" role="tab" id="t-kurva" data-group="calc" aria-controls="c-kurva" aria-selected="false" tabindex="-1">Kurva</button>
+      <button type="button" role="tab" id="t-uji" data-group="calc" aria-controls="c-uji" aria-selected="false" tabindex="-1">Larutan uji</button>
+      <button type="button" role="tab" id="t-rumus" data-group="calc" aria-controls="c-rumus" aria-selected="false" tabindex="-1">Rumus</button>
+    </div>
+
+    <div class="tp" role="tabpanel" data-group="calc" id="c-kondisi" aria-labelledby="t-kondisi">
+      <div class="card">
+        <h3>Kondisi pengukuran</h3>
+        <div class="grid3">
+          <div class="field"><label for="cL">Panjang gelombang (nm)</label><input id="cL" class="n" type="text" inputmode="decimal" data-p="cond.lambda"></div>
+          <div class="field"><label for="cS">Lebar celah (nm)</label><input id="cS" class="n" type="text" inputmode="decimal" data-p="cond.slit" placeholder="isi bila diketahui"></div>
+          <div class="field"><label for="cF">Nyala</label><input id="cF" class="t" type="text" data-p="cond.flame"></div>
+          <div class="field"><label for="cI">Instrumen</label><input id="cI" class="t" type="text" data-p="cond.instr"></div>
+          <div class="field"><label for="cM">Nama sampel</label><input id="cM" class="t" type="text" data-p="cond.sampel"></div>
+        </div>
+        <p class="note">Kondisi percobaan: 422,7 nm, nyala udara–asetilen, lampu katoda berongga Ca, AAS GBC Avanta. Lebar celah tidak tercatat di laporan, isi bila diketahui.</p>
+      </div>
+    </div>
+
+    <div class="tp" role="tabpanel" data-group="calc" id="c-standar" aria-labelledby="t-standar" hidden>
+      <div class="card">
+        <h3>Larutan standar</h3>
+        <p class="note">Larutan induk dari CaCO₃ (Ar Ca 40 dan BM CaCO₃ 100, seperti perhitungan di laporan), larutan baku 100 mg/L diencerkan dari induk, lalu deret standar dibuat dari larutan baku.</p>
+        <div class="grid3">
+          <div class="field"><label for="sM">Bobot CaCO₃ (mg)</label><input id="sM" class="n" type="text" inputmode="decimal" data-p="std.massMg"></div>
+          <div class="field"><label for="sP">Kemurnian CaCO₃ (%)</label><input id="sP" class="n" type="text" inputmode="decimal" data-p="std.purity"></div>
+          <div class="field"><label for="sVi">Labu induk (mL)</label><input id="sVi" class="n" type="text" inputmode="decimal" data-p="std.vInduk"></div>
+          <div class="field"><label for="sPi">Pipet induk (mL)</label><input id="sPi" class="n" type="text" inputmode="decimal" data-p="std.pipet"></div>
+          <div class="field"><label for="sVk">Labu baku (mL)</label><input id="sVk" class="n" type="text" inputmode="decimal" data-p="std.vKerja"></div>
+          <div class="field"><label for="sVd">Labu deret (mL)</label><input id="sVd" class="n" type="text" inputmode="decimal" data-p="std.vDeret"></div><div class="field"><label>Ar Ca</label><input class="n" type="text" inputmode="decimal" data-p="std.ar"></div><div class="field"><label>BM CaCO₃</label><input class="n" type="text" inputmode="decimal" data-p="std.mr"></div><div class="field"><label>C induk target (mg/L)</label><input class="n" type="text" inputmode="decimal" data-p="std.cI"></div><div class="field"><label>C baku target (mg/L)</label><input class="n" type="text" inputmode="decimal" data-p="std.cB"></div>
+        </div>
+        <div class="kv"><div><small>Konsentrasi induk (mg/L Ca)</small><div class="out" id="oInduk">–</div></div><div><small>Konsentrasi baku (mg/L Ca)</small><div class="out" id="oKerja">–</div></div></div>
+      </div>
+      <div class="card">
+        <h3>Deret standar dan absorban</h3>
+        <p class="note">Absorban dibaca pada panjang gelombang maksimum. Hilangkan centang untuk mengeluarkan satu titik dari regresi.</p>
+        <div class="tw"><table class="dt" aria-label="Deret standar">
+          <thead><tr><th>Pakai</th><th>V larutan baku (mL)</th><th>Konsentrasi (mg/L)</th><th>Absorban</th><th>Selisih (A − ŷ)</th><th></th></tr></thead>
+          <tbody id="tbS"></tbody></table></div>
+        <div class="btns"><button type="button" id="addS">Tambah titik standar</button></div>
+      </div>
+    </div>
+
+    <div class="tp" role="tabpanel" data-group="calc" id="c-kurva" aria-labelledby="t-kurva" hidden>
+      <div class="card">
+        <h3>Kurva kalibrasi</h3>
+        <div class="kv" id="kvReg"></div>
+        <div class="field" style="max-width:260px"><label for="qR">r minimal yang diterima</label><input id="qR" class="n" type="text" inputmode="decimal" data-p="qc.rMin"></div>
+      </div>
+      <div class="chart" id="chCal"></div>
+      <div class="legend" id="lgCal"></div>
+      <div class="card"><h3>Pembanding kuadratik dan ketidakpastian</h3><p class="note">Ca linear diberi U95 (selang kepercayaan 95 %, 1 ulangan): U = t × (Sy/x ÷ b) × √(1/m + 1/n + (A − ȳ)² ÷ (b² Sxx)). Model kuadratik y = c + bx + ax² dipakai sebagai pembanding bila kurva melengkung.</p><div class="kv" id="kvQ"></div><div class="tw"><table class="dt"><thead><tr><th>No</th><th>Larutan</th><th>Ca linear ± U95 (mg/L)</th><th>Ca kuadratik (mg/L)</th><th>Selisih</th></tr></thead><tbody id="tbQ"></tbody></table></div></div>
+    </div>
+
+    <div class="tp" role="tabpanel" data-group="calc" id="c-uji" aria-labelledby="t-uji" hidden>
+      <div class="card">
+        <h3>Larutan uji dan Ca terukur</h3>
+        <p class="note">Tiap larutan uji berisi 1 mL Ca 100 mg/L dalam labu 50 mL, ditambah 1 mL larutan pengganggu atau agen (100 mg/L akhir) bila ada. Ca terukur = (A − a) ÷ b dari kurva kalibrasi. Angka merah berada di atas standar tertinggi, artinya hasil kurva diekstrapolasi. Komposisi larutan bisa diubah di Laporan praktikum, tab Data. Rumus langkah demi langkah ada di tab Rumus.</p>
+        <div class="field" style="max-width:220px"><label for="uNom">Ca dibuat (mg/L)</label><input id="uNom" class="n" type="text" inputmode="decimal" data-p="lap.caNom" readonly title="Dihitung dari V Ca larutan uji no. 1"></div>
+        <div class="tw"><table class="dt" aria-label="Larutan uji">
+          <thead><tr><th>No</th><th>Larutan</th><th>Absorban</th><th>Ca terukur (mg/L)</th><th>% terhadap no. 1</th><th>Pemulihan oleh agen</th></tr></thead>
+          <tbody id="tbU"></tbody></table></div>
+        <div class="kv" id="kvUji"></div>
+      </div>
+    </div>
+    <div class="tp" role="tabpanel" data-group="calc" id="c-rumus" aria-labelledby="t-rumus" hidden>
+      <div class="card">
+        <h3>Rumus dan perhitungan lengkap</h3>
+        <p class="note">Setiap rumus ditulis dengan angka Anda dan dihitung ulang otomatis begitu ada angka yang diubah di tab Standar, Larutan uji, atau Laporan praktikum (bobot, volume, absorban, konsentrasi). Isi yang sama dipakai di laporan dan file unduhan.</p>
+        <div class="report" id="calcAll"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAPORAN PRAKTIKUM ============ -->
+  <section class="view" id="v-laporan-praktikum" hidden>
+    <div class="vh"><h2>Laporan praktikum</h2><p class="lead">Semua kolom bisa diisi dan diubah sendiri, tersimpan otomatis di perangkat ini. Tabel, kurva, dan perhitungan terhubung ke data di Kalkulator.</p></div>
+    <div class="tabs" role="tablist" aria-label="Bagian laporan"><button type="button" role="tab" id="t-l1" data-group="lap" aria-controls="p-l1" aria-selected="true">Dasar</button><button type="button" role="tab" id="t-l2" data-group="lap" aria-controls="p-l2" aria-selected="false" tabindex="-1">Cara kerja</button><button type="button" role="tab" id="t-l3" data-group="lap" aria-controls="p-l3" aria-selected="false" tabindex="-1">Data</button><button type="button" role="tab" id="t-l4" data-group="lap" aria-controls="p-l4" aria-selected="false" tabindex="-1">Perhitungan</button><button type="button" role="tab" id="t-l5" data-group="lap" aria-controls="p-l5" aria-selected="false" tabindex="-1">Pembahasan</button><button type="button" role="tab" id="t-l6" data-group="lap" aria-controls="p-l6" aria-selected="false" tabindex="-1">Tanya jawab</button><button type="button" role="tab" id="t-l7" data-group="lap" aria-controls="p-l7" aria-selected="false" tabindex="-1">Penutup</button></div>
+    <div class="tp" role="tabpanel" data-group="lap" id="p-l1" aria-labelledby="t-l1"><div class="card"><h3>Identitas laporan</h3><div class="grid2"><div class="field"><label for="x-lap.judul">Judul</label><input id="x-lap.judul" class="t" type="text" data-p="lap.judul"></div><div class="field"><label for="x-lap.nama">Nama penyusun</label><input id="x-lap.nama" class="t" type="text" data-p="lap.nama"></div><div class="field"><label for="x-lap.nim">NIM</label><input id="x-lap.nim" class="t" type="text" data-p="lap.nim"></div><div class="field"><label for="x-lap.kelas">Kelas</label><input id="x-lap.kelas" class="t" type="text" data-p="lap.kelas"></div><div class="field"><label for="x-lap.kel">Kelompok</label><input id="x-lap.kel" class="t" type="text" data-p="lap.kel"></div><div class="field"><label for="x-lap.tglAwal">Tanggal laporan awal</label><input id="x-lap.tglAwal" class="t" type="text" data-p="lap.tglAwal"></div><div class="field"><label for="x-lap.tglAkhir">Tanggal laporan akhir</label><input id="x-lap.tglAkhir" class="t" type="text" data-p="lap.tglAkhir"></div></div></div><div class="card"><div class="field"><label for="x-tujuan">Tujuan percobaan</label><textarea id="x-tujuan" class="lta" rows="3" data-p="lap.tujuan"></textarea></div><div class="field"><label for="x-teori">Teori dan prinsip percobaan</label><textarea id="x-teori" class="lta" rows="12" data-p="lap.teori"></textarea></div><div class="field"><label for="x-reaksi">Persamaan reaksi</label><textarea id="x-reaksi" class="lta" rows="5" data-p="lap.reaksi"></textarea></div></div></div><div class="tp" role="tabpanel" data-group="lap" id="p-l2" aria-labelledby="t-l2" hidden><div class="card"><p class="note">Satu langkah per paragraf. Ubah teks sesuai prosedur yang benar-benar dikerjakan.</p><div class="field"><label for="x-cara">Cara / skema kerja</label><textarea id="x-cara" class="lta" rows="22" data-p="lap.cara"></textarea></div></div></div><div class="tp" role="tabpanel" data-group="lap" id="p-l3" aria-labelledby="t-l3" hidden><div class="card"><div class="btns"><button type="button" id="bMine">Kembalikan data percobaan kelompok 4</button><span id="lapMsg" role="status"></span></div><p class="note">Tabel deret standar di bawah terhubung langsung ke Kalkulator (tab Standar): mengubah angka di sini atau di sana sama-sama mengubah keduanya. Absorban 9 larutan uji dihitung memakai persamaan kurva yang sama.</p></div>
+<div class="card"><h3>Kondisi pengukuran</h3><div class="grid3"><div class="field"><label for="x-cond.lambda">Panjang gelombang (nm)</label><input id="x-cond.lambda" class="t" type="text" data-p="cond.lambda"></div><div class="field"><label for="x-cond.flame">Nyala</label><input id="x-cond.flame" class="t" type="text" data-p="cond.flame"></div><div class="field"><label for="x-cond.instr">Instrumen</label><input id="x-cond.instr" class="t" type="text" data-p="cond.instr"></div></div></div>
+<div class="card"><h3>1. Pembuatan larutan</h3><div class="tw"><table class="dt"><thead><tr><th>Larutan</th><th>Konsentrasi</th><th>Bobot ditimbang (g)</th><th>Labu (mL)</th><th>Bobot teoritis (g)</th></tr></thead><tbody><tr><td>Ca (CaCO₃), dari Kalkulator</td><td class="o" id="lCaC"></td><td class="o" id="lCaW"></td><td class="o" id="lCaV"></td><td class="o" id="lCaT"></td></tr></tbody><tbody id="lapSol"></tbody></table></div><p class="note">Bobot teoritis = BM garam ÷ BM ion × konsentrasi × volume, memakai BM yang dipakai di laporan. Konsentrasi mg/L untuk sulfat dan fosfat, % b/v untuk La, Sr, dan EDTA.</p></div>
+<div class="card"><h3>Massa molar acuan garam</h3><p class="note">BM garam dan BM/Ar ion dipakai pada bobot teoritis dan rumus. Ubah bila memakai hidrat atau garam lain; rumus tetap.</p><div class="grid3"><div class="field"><label>SO₄²⁻: BM garam / ion</label><div class="btns"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.so4.0"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.so4.1"></div></div><div class="field"><label>PO₄³⁻: BM garam / ion</label><div class="btns"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.po4.0"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.po4.1"></div></div><div class="field"><label>La³⁺ (LaCl₃): BM garam / ion</label><div class="btns"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.la.0"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.la.1"></div></div><div class="field"><label>Sr²⁺ (SrCl₂): BM garam / ion</label><div class="btns"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.sr.0"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.sr.1"></div></div><div class="field"><label>EDTA: BM garam / ion</label><div class="btns"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.edta.0"><input class="n" type="text" inputmode="decimal" data-p="lap.bm.edta.1"></div></div></div></div>
+<div class="card"><h3>2. Deret standar Ca</h3><div class="tw"><table class="dt"><thead><tr><th>No</th><th>V baku 100 mg/L (mL)</th><th>Konsentrasi (mg/L)</th><th>Absorban</th></tr></thead><tbody id="lapSer"></tbody></table></div><div class="kv" id="lapReg"></div><div class="chart" id="lapChart"></div></div>
+<div class="card"><h3>3. Pengukuran larutan uji</h3><div class="field" style="max-width:220px"><label for="x-caNom">Ca dibuat (mg/L)</label><input id="x-caNom" class="n" type="text" inputmode="decimal" data-p="lap.caNom" readonly title="Dihitung dari V Ca larutan uji no. 1"></div><div class="tw"><table class="dt"><thead><tr><th>No</th><th>Larutan</th><th>V Ca</th><th>V SO₄²⁻</th><th>V PO₄³⁻</th><th>V Sr²⁺</th><th>V La³⁺</th><th>V EDTA</th><th>Absorban</th><th>Ca dibuat (mg/L)</th><th>Ca terukur (mg/L)</th><th>% terhadap no. 1</th><th>Perolehan vs dibuat</th><th>Penilaian</th><th></th></tr></thead><tbody id="lapRows"></tbody></table></div><p class="note">Isi volume tiap larutan stok yang dipipet ke labu uji (mL; kosongkan bila tidak ditambahkan) dan absorban. Konsentrasi akhir = V × C stok ÷ V labu, Ca terukur = (A − a) ÷ b, perolehan = Ca terukur ÷ Ca dibuat × 100, semuanya dihitung otomatis. C stok diatur di tabel Pembuatan larutan, V labu = Labu deret.</p><div class="btns"><button type="button" id="lapAdd">Tambah larutan uji</button></div><style>#lapRows input{width:62px;min-width:62px;text-align:center}#lapRows small{color:var(--mute)}</style></div></div><div class="tp" role="tabpanel" data-group="lap" id="p-l4" aria-labelledby="t-l4" hidden><div class="card"><p class="note">Bagian ini dihitung otomatis dari data di tab Data dan Kalkulator.</p><div class="report" id="lapCalc"></div></div><div class="card"><div class="field"><label for="x-catat">Catatan perhitungan tambahan (opsional)</label><textarea id="x-catat" class="lta" rows="4" data-p="lap.catat"></textarea></div></div></div><div class="tp" role="tabpanel" data-group="lap" id="p-l5" aria-labelledby="t-l5" hidden><div class="card"><h3>Ringkasan hasil (terhubung ke data)</h3><div class="report" id="lapSum"></div></div><div class="card"><div class="field"><label for="x-bahas">Hasil dan pembahasan</label><textarea id="x-bahas" class="lta" rows="26" data-p="lap.bahas"></textarea></div></div></div><div class="tp" role="tabpanel" data-group="lap" id="p-l6" aria-labelledby="t-l6" hidden><div class="card"><h3>1. Apa yang dimaksud gangguan analisis dalam spektrofotometri? Mengapa penting dikenali dan diatasi?</h3><div class="field"><label for="x-qa1">Jawaban</label><textarea id="x-qa1" class="lta" rows="7" data-p="lap.qa1"></textarea></div></div><div class="card"><h3>2. Jelaskan jenis gangguan dalam analisis AAS, penyebab utama, dan cara mengatasinya.</h3><div class="field"><label for="x-qa2">Jawaban</label><textarea id="x-qa2" class="lta" rows="8" data-p="lap.qa2"></textarea></div></div><div class="card"><h3>3. Jelaskan perbedaan releasing agent dan masking agent beserta contohnya.</h3><div class="field"><label for="x-qa3">Jawaban</label><textarea id="x-qa3" class="lta" rows="7" data-p="lap.qa3"></textarea></div></div></div><div class="tp" role="tabpanel" data-group="lap" id="p-l7" aria-labelledby="t-l7" hidden><div class="card"><div class="field"><label for="x-kes">Kesimpulan</label><textarea id="x-kes" class="lta" rows="8" data-p="lap.kes"></textarea></div><div class="field"><label for="x-lamp">Lampiran (keterangan foto)</label><text
